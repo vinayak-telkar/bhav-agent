@@ -1,0 +1,817 @@
+<title>Agent Bhav — Product Overview</title>
+<style>
+  :root {
+    --paper: #eff1e9;
+    --paper-raised: #f7f8f2;
+    --ink: #16211c;
+    --ink-soft: #46534b;
+    --brass: #a5761f;
+    --brass-strong: #8a621a;
+    --teal: #33594f;
+    --teal-soft: #4d7267;
+    --line: #d3d6c6;
+    --good: #276b3c;
+    --good-bg: #e2ebe0;
+    --watch: #a8560f;
+    --watch-bg: #f2e6d6;
+    --danger: #8f3226;
+    --danger-bg: #f1ded9;
+    --shadow: 0 1px 0 rgba(22, 33, 28, 0.06);
+    --serif: Iowan Old Style, Palatino Linotype, Palatino, Georgia, "Noto Serif", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #141c17;
+    --paper-raised: #1b2620;
+    --ink: #e9ebe1;
+    --ink-soft: #a9b3a6;
+    --brass: #d4a13f;
+    --brass-strong: #e6b657;
+    --teal: #7fab9c;
+    --teal-soft: #6a9587;
+    --line: #2c362f;
+    --good: #6bbf86;
+    --good-bg: #1e3226;
+    --watch: #e0954c;
+    --watch-bg: #3a2a18;
+    --danger: #e0847a;
+    --danger-bg: #3a211d;
+    --shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #141c17;
+      --paper-raised: #1b2620;
+      --ink: #e9ebe1;
+      --ink-soft: #a9b3a6;
+      --brass: #d4a13f;
+      --brass-strong: #e6b657;
+      --teal: #7fab9c;
+      --teal-soft: #6a9587;
+      --line: #2c362f;
+      --good: #6bbf86;
+      --good-bg: #1e3226;
+      --watch: #e0954c;
+      --watch-bg: #3a2a18;
+      --danger: #e0847a;
+      --danger-bg: #3a211d;
+      --shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--brass); color: var(--paper); }
+
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .wrap-wide {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--serif);
+    font-weight: 400;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  p { margin: 0 0 1em; max-width: 62ch; }
+
+  .num, .mono, code, table { font-variant-numeric: tabular-nums; }
+  .mono { font-family: var(--mono); }
+
+  a { color: var(--teal); }
+
+  /* ---------- Nav ---------- */
+  nav.top {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 1.5rem;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.top .brand {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+  }
+  nav.top .brand em {
+    font-style: normal;
+    color: var(--brass);
+  }
+  nav.top .links {
+    display: flex;
+    gap: 1.4rem;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  nav.top .links a {
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+  nav.top .links a:hover { color: var(--brass); }
+  nav.top .links a:focus-visible, a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--brass);
+    outline-offset: 2px;
+  }
+  @media (max-width: 640px) { nav.top .links { display: none; } }
+
+  /* ---------- Hero ---------- */
+  header.hero {
+    padding: 4.5rem 0 3rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--brass-strong);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  h1.title {
+    font-size: clamp(2.1rem, 5vw, 3.35rem);
+    line-height: 1.12;
+    max-width: 15ch;
+  }
+  .hero .lede {
+    margin-top: 1.4rem;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 46ch;
+  }
+  .ticker {
+    margin-top: 2.6rem;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 0.8rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+  }
+  .ticker-track {
+    display: inline-flex;
+    gap: 2.2rem;
+    animation: scroll-left 34s linear infinite;
+    font-family: var(--mono);
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+  }
+  .ticker-track span b { color: var(--ink); font-weight: 600; }
+  .ticker-track .up { color: var(--good); }
+  .ticker-track .down { color: var(--danger); }
+  @keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; }
+  }
+
+  /* ---------- Editorial sections ---------- */
+  section.editorial {
+    padding: 3.6rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  section.editorial h2 {
+    font-size: clamp(1.5rem, 3vw, 2.05rem);
+    max-width: 20ch;
+  }
+  section.editorial .eyebrow { margin-bottom: 0.9rem; }
+  section.editorial .lede {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    margin-top: 1rem;
+    max-width: 58ch;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.4rem;
+    margin-top: 1.6rem;
+  }
+  @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } }
+
+  blockquote.pull {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 1.6rem 0 0;
+    padding-left: 1.1rem;
+    border-left: 3px solid var(--brass);
+    max-width: 48ch;
+  }
+  blockquote.pull cite {
+    display: block;
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    margin-top: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .actions-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.6rem;
+  }
+  .actions-strip span {
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    padding: 0.32rem 0.65rem;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    color: var(--ink-soft);
+    background: var(--paper-raised);
+  }
+
+  /* ---------- Capability panels ---------- */
+  section.capabilities { padding: 3.6rem 0; border-bottom: 1px solid var(--line); }
+  .cap-panel {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2rem;
+    padding: 2.2rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .cap-panel:first-of-type { border-top: none; }
+  @media (max-width: 700px) { .cap-panel { grid-template-columns: 1fr; gap: 0.8rem; } }
+  .cap-label {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    color: var(--brass-strong);
+    text-wrap: balance;
+  }
+  .cap-label small {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+    margin-top: 0.4rem;
+  }
+  .cap-body p { color: var(--ink-soft); }
+  .cap-body ul {
+    margin: 0.9rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .cap-body li {
+    position: relative;
+    padding-left: 1.15rem;
+    color: var(--ink);
+    max-width: 58ch;
+  }
+  .cap-body li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+  }
+
+  /* ---------- Screen mockups ---------- */
+  section.screens { padding: 3.6rem 0; border-bottom: 1px solid var(--line); }
+  .screen-block { margin-top: 3rem; }
+  .screen-block:first-of-type { margin-top: 2.2rem; }
+  .screen-meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+  .screen-meta h3 { font-size: 1.35rem; }
+  .screen-meta .tag {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+  }
+  .screen-copy { color: var(--ink-soft); max-width: 66ch; margin-bottom: 1.4rem; }
+  .screen-copy strong { color: var(--ink); font-weight: 600; }
+
+  .frame {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--paper-raised);
+    box-shadow: var(--shadow);
+  }
+  .frame-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--ink-soft);
+  }
+  .frame-bar .dots { display: flex; gap: 0.3rem; }
+  .frame-bar .dots i {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--line);
+    display: inline-block;
+  }
+  .frame-body { padding: 1.1rem 1.2rem 1.3rem; overflow-x: auto; }
+
+  /* mock UI atoms, styled with the presentation's own palette (not the app's) */
+  .m-strip {
+    display: flex; align-items: center; gap: 1.1rem; flex-wrap: wrap;
+    font-family: var(--mono); font-size: 0.78rem; color: var(--ink-soft);
+    padding-bottom: 0.9rem; margin-bottom: 0.9rem; border-bottom: 1px solid var(--line);
+  }
+  .m-strip .btn {
+    margin-left: auto; background: var(--ink); color: var(--paper);
+    padding: 0.32rem 0.75rem; border-radius: 4px; font-family: var(--sans); font-size: 0.78rem;
+  }
+  .m-summary { display: flex; height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 1.1rem; }
+  .m-summary i { display: block; height: 100%; }
+
+  .m-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.75rem; }
+  .m-card { border: 1px solid var(--line); border-radius: 6px; padding: 0.7rem 0.8rem; background: var(--paper); }
+  .m-card-head { display: flex; justify-content: space-between; align-items: center; gap: 0.4rem; margin-bottom: 0.35rem; }
+  .m-sym { font-family: var(--mono); font-weight: 600; font-size: 0.82rem; }
+  .m-pill { font-family: var(--sans); font-size: 0.66rem; padding: 0.12rem 0.45rem; border-radius: 99px; font-weight: 600; white-space: nowrap; }
+  .m-card p { font-size: 0.78rem; color: var(--ink-soft); margin: 0.3rem 0 0; max-width: none; }
+  .m-glance { font-family: var(--mono); font-size: 0.72rem; display: flex; gap: 0.6rem; margin-top: 0.3rem; }
+
+  .pill-watch { background: var(--watch-bg); color: var(--watch); }
+  .pill-good { background: var(--good-bg); color: var(--good); }
+  .pill-danger { background: var(--danger-bg); color: var(--danger); }
+
+  table.m-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; margin-top: 0.4rem; }
+  table.m-table th { text-align: left; font-family: var(--mono); font-weight: 500; text-transform: uppercase; font-size: 0.66rem; letter-spacing: 0.04em; color: var(--ink-soft); padding: 0.3rem 0.5rem; border-bottom: 1px solid var(--line); }
+  table.m-table td { padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--line); }
+  table.m-table td.sym { font-family: var(--mono); font-weight: 600; }
+
+  .m-sub { font-family: var(--serif); font-size: 0.95rem; margin: 1.4rem 0 0.5rem; color: var(--ink); }
+
+  .m-gauge { display: inline-flex; align-items: center; gap: 0.35rem; }
+  .m-gauge .track { width: 46px; height: 6px; background: var(--line); border-radius: 3px; position: relative; }
+  .m-gauge .fill { position: absolute; left: 0; top: 0; height: 100%; border-radius: 3px; background: var(--teal); }
+
+  .m-steps { counter-reset: step; display: flex; flex-direction: column; gap: 0.9rem; }
+  .m-step { display: grid; grid-template-columns: 26px 1fr; gap: 0.7rem; }
+  .m-step .n {
+    counter-increment: step;
+    width: 26px; height: 26px; border-radius: 50%;
+    border: 1px solid var(--brass); color: var(--brass-strong);
+    font-family: var(--mono); font-size: 0.78rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .m-step .n::before { content: counter(step); }
+  .m-step h5 { font-family: var(--sans); font-weight: 600; font-size: 0.85rem; margin: 0 0 0.15rem; }
+  .m-step p { font-size: 0.8rem; color: var(--ink-soft); margin: 0; }
+
+  .m-manage { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 560px) { .m-manage { grid-template-columns: 1fr; } }
+  .m-manage h5 { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); margin: 0 0 0.5rem; }
+  .m-tag-row { display: flex; align-items: center; justify-content: space-between; font-size: 0.8rem; padding: 0.4rem 0; border-bottom: 1px solid var(--line); }
+  .m-tag-row:last-child { border-bottom: none; }
+  .m-tag { font-family: var(--mono); font-size: 0.68rem; color: var(--ink-soft); }
+
+  .m-chat { display: flex; flex-direction: column; gap: 0.6rem; }
+  .m-msg { max-width: 80%; padding: 0.55rem 0.75rem; border-radius: 8px; font-size: 0.82rem; }
+  .m-msg.user { align-self: flex-end; background: var(--ink); color: var(--paper); }
+  .m-msg.agent { align-self: flex-start; background: var(--paper); border: 1px solid var(--line); }
+  .m-msg .role { display: block; font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.65; margin-bottom: 0.25rem; }
+
+  /* ---------- Trust ---------- */
+  section.trust { padding: 3.6rem 0; border-bottom: 1px solid var(--line); }
+  .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; margin-top: 1.8rem; }
+  @media (max-width: 760px) { .trust-grid { grid-template-columns: 1fr; } }
+  .trust-item h4 { font-size: 1.02rem; margin-bottom: 0.5rem; }
+  .trust-item .glyph {
+    font-family: var(--mono); color: var(--brass-strong); font-size: 0.72rem;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 0.6rem; display: block;
+  }
+  .trust-item p { color: var(--ink-soft); font-size: 0.92rem; }
+
+  /* ---------- Closing ---------- */
+  footer.close { padding: 3.6rem 0 3rem; }
+  footer.close h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); max-width: 24ch; }
+  footer.close .lede { color: var(--ink-soft); margin-top: 0.9rem; max-width: 54ch; }
+  .disclaimer {
+    margin-top: 2.6rem; padding-top: 1.4rem; border-top: 1px solid var(--line);
+    font-family: var(--mono); font-size: 0.76rem; color: var(--ink-soft);
+    max-width: 60ch;
+  }
+  .credit { margin-top: 1rem; font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; }
+</style>
+
+<nav class="top">
+  <div class="brand">agent <em>bhav</em></div>
+  <div class="links">
+    <a href="#product">Product</a>
+    <a href="#agentic">Agentic design</a>
+    <a href="#screens">Inside the app</a>
+    <a href="#trust">Trust</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">NSE equity flow analysis · capstone project</span>
+    <h1 class="title">The bhavcopy tells you what really happened today. Almost nobody reads it.</h1>
+    <p class="lede">
+      Agent Bhav does — every evening, for exactly the stocks you hold or watch — and
+      reports back in plain English what the flow data says, with the evidence attached.
+      It informs. You decide.
+    </p>
+  </div>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>AARTIPHARM <b>690.00</b> <b class="up">▲2.07%</b> deliv 50.7% vs 47.97% avg</span>
+      <span>CELLO <b>344.85</b> <b class="down">▼0.20%</b> deliv 64.1% vs 44.4% avg</span>
+      <span>LICI <b>391.30</b> <b class="down">▼8.68%</b> deliv 41.7% vs 53.1% avg</span>
+      <span>HDFCBANK <b>742.00</b> <b class="down">▼1.46%</b> capped-upside · call OI @ 770</span>
+      <span>PIDILITIND <b>1620.00</b> short-OI +253,000 · basis −3.8</span>
+      <span>AARTIPHARM <b>690.00</b> <b class="up">▲2.07%</b> deliv 50.7% vs 47.97% avg</span>
+      <span>CELLO <b>344.85</b> <b class="down">▼0.20%</b> deliv 64.1% vs 44.4% avg</span>
+      <span>LICI <b>391.30</b> <b class="down">▼8.68%</b> deliv 41.7% vs 53.1% avg</span>
+      <span>HDFCBANK <b>742.00</b> <b class="down">▼1.46%</b> capped-upside · call OI @ 770</span>
+      <span>PIDILITIND <b>1620.00</b> short-OI +253,000 · basis −3.8</span>
+    </div>
+  </div>
+</header>
+
+<section class="editorial" id="product">
+  <div class="wrap">
+    <span class="eyebrow">The problem</span>
+    <h2>Price and volume alone can't tell a genuine buyer from a busy day.</h2>
+    <p class="lede">
+      What separates real accumulation from intraday churn — delivery percentage, and the
+      footprints around it in the futures &amp; options data — is buried in NSE's daily
+      bhavcopy, a file built for clearing and settlement, not for reading. No retail
+      investor opens it every evening. So they act late: buying into leveraged rallies,
+      missing quiet accumulation, getting no warning when a large holder starts exiting.
+    </p>
+    <blockquote class="pull">
+      An autonomous analyst that reads the bhavcopy every evening, checks only the stocks
+      you actually hold or watch, and tells you — in plain English — what the flow says
+      and what the sensible next step is.
+      <cite>Product thesis</cite>
+    </blockquote>
+    <p class="lede" style="margin-top:1.6rem;">
+      It is explicitly not an advisory product. Every read is data-driven information,
+      framed the way a weather report is framed: here's what the instruments show, here's
+      the confidence, you decide what to do about it. Every output resolves to one of
+      seven defined actions — never a bare buy/sell call.
+    </p>
+    <div class="actions-strip">
+      <span>Hold, no action</span>
+      <span>Review the position</span>
+      <span>Stagger an entry / add on dip</span>
+      <span>Defer entry</span>
+      <span>Trim into strength</span>
+      <span>Tighten exit discipline</span>
+      <span>Add to watchlist</span>
+    </div>
+  </div>
+</section>
+
+<section class="capabilities" id="agentic">
+  <div class="wrap-wide">
+    <span class="eyebrow">What makes it agentic</span>
+    <h2 style="font-size: clamp(1.5rem, 3vw, 2.05rem); max-width: 26ch;">Three capabilities, not one prompt.</h2>
+    <p class="lede" style="margin-top: 1rem; max-width: 58ch; color: var(--ink-soft);">
+      Agent Bhav isn't a single call to a language model. It's a small set of agents that
+      each make their own decisions about what to look at, verify their own output before
+      you see it, and remember what they told you last time.
+    </p>
+
+    <div class="cap-panel">
+      <div class="cap-label">The Daily Digest<small>Mode 1 · proactive</small></div>
+      <div class="cap-body">
+        <p>Runs through every stock you hold or watch, one at a time, and decides for
+        itself how deep to go on each.</p>
+        <ul>
+          <li>Pulls today's snapshot first, and only pulls the heavier data — 20-day
+          delivery trend, F&amp;O positioning — for stocks where something actually
+          crossed a threshold. A quiet day gets a quiet read; the agent doesn't manufacture
+          drama to justify itself.</li>
+          <li>Checks what it told you about that same stock last time before writing
+          anything new, so a "hold" today either reinforces or explicitly revises
+          yesterday's call — it doesn't restart from zero every evening.</li>
+          <li>Writes the read, then re-reads its own output: every number it just cited
+          gets checked against the real data it pulled this turn. Anything it can't back
+          up is discarded and replaced with a plain, honest, data-only summary — never a
+          guess dressed up as an insight.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cap-panel">
+      <div class="cap-label">The Chat Analyst<small>Mode 2 · on demand</small></div>
+      <div class="cap-body">
+        <p>Ask it anything about your portfolio, whenever you want an answer.</p>
+        <ul>
+          <li>It doesn't answer from memory or general market knowledge — it looks up
+          your actual holdings, snapshot, or history through the same tools the digest
+          uses, every single time it's asked.</li>
+          <li>Same verification discipline as the digest: a number it can't trace back to
+          a real lookup this turn doesn't reach you.</li>
+          <li>Knows what it's for. Portfolio questions get answered in full; "should I buy
+          this" or "write me code to automate my trading" get a polite decline — a
+          boundary the agent checks and enforces itself, not a keyword filter bolted on
+          after the fact.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cap-panel">
+      <div class="cap-label">The Self-Grading Loop<small>Insight tracker · retrospective</small></div>
+      <div class="cap-body">
+        <p>The agent doesn't get to make a call and walk away from it.</p>
+        <ul>
+          <li>Every insight is logged against the price at the time it was made.</li>
+          <li>Over the next several sessions, the agent checks back on its own, without
+          being asked, to see whether the stock actually moved the way the signal
+          implied.</li>
+          <li>Each call resolves to confirmed, expired, or strengthening — a track
+          record you can see, not just an accumulating pile of opinions.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="editorial">
+  <div class="wrap">
+    <span class="eyebrow">Why this is trustworthy</span>
+    <h2>Every insight carries its own evidence, or it doesn't get shown to you.</h2>
+    <div class="two-col">
+      <div>
+        <p style="color: var(--ink-soft);"><strong style="color: var(--ink);">Portfolio-relative, not market-wide.</strong>
+        Every stock is measured against its own ~20-day baseline, and only threshold-crossers
+        surface. "Nothing changed today" is a complete, valid, valuable answer — the agent
+        isn't rewarded for finding something to say.</p>
+      </div>
+      <div>
+        <p style="color: var(--ink-soft);"><strong style="color: var(--ink);">Evidence, not adjectives.</strong>
+        "Delivery 68% vs 44% baseline over 8 sessions while price rose 6%" — never a bare
+        "looks bullish." Ambiguous readings are labeled ambiguous, with the tie-breaker
+        stated plainly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="screens" id="screens">
+  <div class="wrap-wide">
+    <span class="eyebrow">Inside the app</span>
+    <h2 style="font-size: clamp(1.5rem, 3vw, 2.05rem); max-width: 22ch;">Four screens, each doing one job.</h2>
+
+    <!-- DASHBOARD -->
+    <div class="screen-block">
+      <div class="screen-meta">
+        <h3>Dashboard</h3>
+        <span class="tag">Daily read</span>
+      </div>
+      <p class="screen-copy">
+        The morning-coffee screen. One click runs the digest agent across everything held
+        or watched; what comes back is organized by how urgently it matters, not just
+        dumped as a list. <strong>Needs Attention</strong> surfaces only stocks whose
+        action isn't a plain hold, each with a price-change badge and a delivery gauge for
+        an instant read before you even open the narrative. <strong>Holdings</strong> and
+        <strong>Wishlist</strong> give the always-visible glance view. The
+        <strong>Insight Tracker</strong> is the paper trail — every past call, and whether
+        it panned out.
+      </p>
+      <div class="frame">
+        <div class="frame-bar"><span class="dots"><i></i><i></i><i></i></span> agent-bhav — dashboard</div>
+        <div class="frame-body">
+          <div class="m-strip">
+            <span>Data as of: <b style="color:var(--ink)">2026-08-04</b></span>
+            <span>7 items need attention</span>
+            <span class="btn">Check my stocks now</span>
+          </div>
+          <div class="m-summary">
+            <i style="background:var(--watch-bg); width:58%;"></i>
+            <i style="background:var(--good-bg); width:34%;"></i>
+            <i style="background:var(--line); width:8%;"></i>
+          </div>
+          <div class="m-sub">Needs attention</div>
+          <div class="m-cards">
+            <div class="m-card">
+              <div class="m-card-head"><span class="m-sym">CELLO</span><span class="m-pill pill-watch">Review · medium</span></div>
+              <div class="m-glance"><span style="color:var(--danger)">▼0.20%</span>
+                <span class="m-gauge"><span class="track"><span class="fill" style="width:64%"></span></span>64.1%</span></div>
+              <p>Delivery jumped to 64.1% vs a 44.4% baseline while price barely moved — possible
+              hand-change, but volume didn't confirm it. Signal remains ambiguous.</p>
+            </div>
+            <div class="m-card">
+              <div class="m-card-head"><span class="m-sym">LICI</span><span class="m-pill pill-watch">Review · low</span></div>
+              <div class="m-glance"><span style="color:var(--danger)">▼8.68%</span>
+                <span class="m-gauge"><span class="track"><span class="fill" style="width:42%"></span></span>41.7%</span></div>
+              <p>Model synthesis couldn't be verified against tool data this run — automated
+              data-only summary shown instead of a guess. Manual review recommended.</p>
+            </div>
+            <div class="m-card">
+              <div class="m-card-head"><span class="m-sym">EPIGRAL</span><span class="m-pill pill-watch">Review · high</span></div>
+              <div class="m-glance"><span style="color:var(--danger)">▼1.78%</span>
+                <span class="m-gauge"><span class="track"><span class="fill" style="width:69%"></span></span>68.9%</span></div>
+              <p>Falling price, sharply higher delivery, weaker volume — persists from the prior
+              session. Quiet-distribution signature reinforced.</p>
+            </div>
+          </div>
+
+          <div class="m-sub">Holdings</div>
+          <table class="m-table">
+            <thead><tr><th>Symbol</th><th>Close</th><th>Change</th><th>Deliv%</th><th>Signal</th></tr></thead>
+            <tbody>
+              <tr><td class="sym">AARTIPHARM</td><td>690.00</td><td style="color:var(--good)">▲2.07%</td><td>50.7%</td><td>Hold</td></tr>
+              <tr><td class="sym">ASIANPAINT</td><td>2775.00</td><td style="color:var(--danger)">▼1.25%</td><td>50.8%</td><td>Hold</td></tr>
+              <tr><td class="sym">PAYTM</td><td>1400.00</td><td style="color:var(--danger)">▼0.71%</td><td>25.8%</td><td>Review</td></tr>
+            </tbody>
+          </table>
+
+          <div class="m-sub">Insight tracker</div>
+          <table class="m-table">
+            <thead><tr><th>Date</th><th>Symbol</th><th>Signal</th><th>Status</th><th>Outcome</th></tr></thead>
+            <tbody>
+              <tr><td>08-03</td><td class="sym">PAYTM</td><td>Hold</td><td>pending</td><td style="color:var(--good)">+4.24%</td></tr>
+              <tr><td>08-03</td><td class="sym">LICI</td><td>Review</td><td>pending</td><td style="color:var(--danger)">−7.86%</td></tr>
+              <tr><td>08-03</td><td class="sym">TVSMOTOR</td><td>Review</td><td>pending</td><td style="color:var(--good)">+1.09%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- MANAGE -->
+    <div class="screen-block">
+      <div class="screen-meta">
+        <h3>Manage</h3>
+        <span class="tag">Portfolio setup</span>
+      </div>
+      <p class="screen-copy">
+        Where you tell the agent what to watch. Search any NSE symbol, add it as
+        <strong>held</strong> (with a size bucket — small, medium, or large, never an exact
+        quantity or value) or straight to the <strong>wishlist</strong>. One click promotes
+        a wishlist idea to a real holding once you've bought it. This list is the entire
+        privacy footprint — no broker login, no PII, ever.
+      </p>
+      <div class="frame">
+        <div class="frame-bar"><span class="dots"><i></i><i></i><i></i></span> agent-bhav — manage</div>
+        <div class="frame-body">
+          <div class="m-manage">
+            <div>
+              <h5>Held</h5>
+              <div class="m-tag-row"><span class="m-sym" style="font-size:0.8rem">AARTIPHARM</span><span class="m-tag">small</span></div>
+              <div class="m-tag-row"><span class="m-sym" style="font-size:0.8rem">ASIANPAINT</span><span class="m-tag">small</span></div>
+              <div class="m-tag-row"><span class="m-sym" style="font-size:0.8rem">EIHOTEL</span><span class="m-tag">small</span></div>
+            </div>
+            <div>
+              <h5>Wishlist</h5>
+              <div class="m-tag-row"><span class="m-sym" style="font-size:0.8rem">HDFCBANK</span><span class="m-tag">promote →</span></div>
+              <div class="m-tag-row"><span class="m-sym" style="font-size:0.8rem">RELIANCE</span><span class="m-tag">promote →</span></div>
+              <div class="m-tag-row"><span class="m-sym" style="font-size:0.8rem">TVSMOTOR</span><span class="m-tag">promote →</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UPDATE MARKET DATA -->
+    <div class="screen-block">
+      <div class="screen-meta">
+        <h3>Update Market Data</h3>
+        <span class="tag">Daily refresh</span>
+      </div>
+      <p class="screen-copy">
+        NSE blocks scripted downloads of the bhavcopy, so this is the one honest,
+        human-in-the-loop step in an otherwise autonomous pipeline: you open NSE's own
+        links and save three files. Everything after that — matching them in your
+        downloads folder, parsing, loading, flagging corporate actions — is the agent's
+        job again.
+      </p>
+      <div class="frame">
+        <div class="frame-bar"><span class="dots"><i></i><i></i><i></i></span> agent-bhav — update market data</div>
+        <div class="frame-body">
+          <div class="m-steps">
+            <div class="m-step"><span class="n"></span><div><h5>Pick a trade date</h5><p>Defaults to the last completed session automatically.</p></div></div>
+            <div class="m-step"><span class="n"></span><div><h5>Download the files</h5><p>Direct NSE links for cash, delivery, and F&amp;O bhavcopy.</p></div></div>
+            <div class="m-step"><span class="n"></span><div><h5>Check downloads folder</h5><p>The agent finds and matches the files itself.</p></div></div>
+            <div class="m-step"><span class="n"></span><div><h5>Load the data</h5><p>Parses, loads, and flags any corporate actions found.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAT -->
+    <div class="screen-block">
+      <div class="screen-meta">
+        <h3>Chat</h3>
+        <span class="tag">Ask anything</span>
+      </div>
+      <p class="screen-copy">
+        For the question that can't wait for tomorrow's digest. Every answer is grounded
+        the same way the daily read is — looked up live, verified before it reaches you —
+        and the agent knows the edge of its own job description.
+      </p>
+      <div class="frame">
+        <div class="frame-bar"><span class="dots"><i></i><i></i><i></i></span> agent-bhav — chat</div>
+        <div class="frame-body">
+          <div class="m-chat">
+            <div class="m-msg user"><span class="role">You</span>How's my portfolio looking today?</div>
+            <div class="m-msg agent"><span class="role">Agent</span>Most of your holdings are steady — AARTIPHARM is up 2.07% on rising
+            delivery, consistent with the accumulation read from earlier this week. CELLO and PAYTM
+            are flagged for review; see today's digest for the evidence on each.</div>
+            <div class="m-msg user"><span class="role">You</span>Can you write me a script to auto-buy on the next dip?</div>
+            <div class="m-msg agent"><span class="role">Agent</span>I'm not able to help with trade automation — I'm a flow-analysis
+            assistant, not a broker or coding agent. I can walk you through what the delivery and
+            F&amp;O data are showing for any stock you're watching, if that helps.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust" id="trust">
+  <div class="wrap">
+    <span class="eyebrow">Guardrails</span>
+    <h2>An agent that can say "I don't know" is more useful than one that can't.</h2>
+    <div class="trust-grid">
+      <div class="trust-item">
+        <span class="glyph">grounding</span>
+        <h4>Verify before you see it</h4>
+        <p>Every number in every narrative is checked against the real tool output from
+        that turn. Fails verification, gets swapped for a plain data summary — silently,
+        before it ever reaches the screen.</p>
+      </div>
+      <div class="trust-item">
+        <span class="glyph">scope</span>
+        <h4>A defined edge, held firmly</h4>
+        <p>Portfolio questions, answered fully. Trade execution, automation, "should I
+        buy" — declined, every time, by the agent's own judgment, not a keyword list.</p>
+      </div>
+      <div class="trust-item">
+        <span class="glyph">privacy</span>
+        <h4>Minimum data, by design</h4>
+        <p>A symbol list and a size bucket. No name, no broker login, no portfolio value.
+        There's nothing sensitive to leak because nothing sensitive is asked for.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="close">
+  <div class="wrap">
+    <h2>Next: how it's actually built.</h2>
+    <p class="lede">This deck covers the product and the case for calling it agentic. A
+    follow-up will walk through the architecture — the digest and chat agents, the
+    verification loop, the data pipeline — without requiring you to read any code.</p>
+    <div class="disclaimer">
+      Agent Bhav is an informational flow-analysis tool, not a financial advisor or
+      broker. Nothing it produces is investment advice. It informs; you decide.
+    </div>
+    <div class="credit">Agent Bhav — NSE equity flow analysis · capstone project</div>
+  </div>
+</footer>
