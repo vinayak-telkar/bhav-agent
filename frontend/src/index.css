@@ -1,0 +1,23 @@
+:root {
+  /* Forced to light: this app only has light-theme styles. "light dark" here
+     let the browser apply dark-mode UA defaults to native controls (buttons
+     rendering white-on-transparent, invisible against our white cards) while
+     the rest of the page stayed explicitly light — a real mismatch, not just
+     a preview-tool quirk. Revisit if a dark theme is ever designed. */
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: #1a1a2e;
+  background: #fff;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}

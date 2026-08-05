@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# Node
+node_modules/
+frontend/dist/
+
+# Env / secrets
+.env
+
+# Data
+data/*.db
+data/*.db-wal
+data/*.db-shm
+data/raw/
+
+# OS
+.DS_Store
