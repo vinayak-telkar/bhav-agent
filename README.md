@@ -1,7 +1,7 @@
 # Bhavcopy Flow Agent
 
 **[View the Product Overview presentation →](https://claude.ai/code/artifact/4d160d1b-70a6-4b28-8abd-05c6f47fd77a)**
-(source also lives in this repo as [`presentation.html`](presentation.html))
+(source also lives in this repo as [`product-overview.html`](product-overview.html))
 
 An autonomous analyst that reads the NSE end-of-day bhavcopy, checks only the stocks a
 user holds or watches, and reports what the flow data says — in plain English, with
